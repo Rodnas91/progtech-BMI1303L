@@ -19,9 +19,11 @@ public class Jatek {
         while (true) {
             palya.kirajzol();
 
-            System.out.println(jatekosNev + "add meg sor es oszlop szamat (1-tol kezdve):");
-            int sor = sc.nextInt() - 1;
-            int oszlop = sc.nextInt() - 1;
+            System.out.println(jatekosNev + " add meg sor es oszlop szamat (1-tol kezdve):");
+            //int sor = sc.nextInt() - 1;
+            //int oszlop = sc.nextInt() - 1;
+            int sor = bekerSzam("Add meg a sort (1–" + palya.getMeret() + "): ", 1, palya.getMeret()) - 1;
+            int oszlop = bekerSzam("Add meg az oszlopot (1–" + palya.getMeret() + "): ", 1, palya.getMeret()) - 1;
 
             if (!palya.lepes(sor, oszlop, 'X')) {
                 System.out.println("Ervenytelen lepes! Probald ujra.");
@@ -47,6 +49,26 @@ public class Jatek {
                 System.out.println("A gep nyert!");
                 break;
             }
+        }
+    }
+
+    private int bekerSzam(String uzenet, int min,  int max) {
+        while (true) {
+            System.out.print(uzenet);
+
+            if (!sc.hasNextInt()) {
+                System.out.println("Nincs tobb szabad mezo!");
+                sc.next();
+                continue;
+            }
+
+            int szam = sc.nextInt();
+            if (szam < min || szam > max) {
+                System.out.println("Ervenytelen: csak " + min + " es " + max + " kozott adhatsz meg szamot.");
+                continue;
+            }
+
+            return szam;
         }
     }
 }

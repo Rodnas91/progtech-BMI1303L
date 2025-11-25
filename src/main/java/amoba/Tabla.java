@@ -126,4 +126,9 @@ public class Tabla {
         return false;
     }
 
+    public int getMeret() {
+        return meret;
+    }
+
+
 }
