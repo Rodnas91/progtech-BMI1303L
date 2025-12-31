@@ -44,6 +44,13 @@ public class Tabla {
             System.out.print("+---");
         }
         System.out.println("+");
+
+        /*System.out.println("Debug: első sor mezőtömb:");
+        char[][] mezok = this.getMezok();
+        for (int j = 0; j < meret; j++) {
+            System.out.print("[" + mezok[0][j] + "]");
+        }
+        System.out.println(); */
     }
 
     public boolean lepes(int sor, int oszlop, char jel) {
@@ -130,5 +137,18 @@ public class Tabla {
         return meret;
     }
 
+    // JSON mentéshez: tábla mezőinek lekérdezése
+    public char[][] getMezok() {
+        return mezok;
+    }
+
+    // JSON betöltéshez: tábla mezőinek visszaállítása
+    public void setMezok(char[][] ujMezok) {
+        for (int i = 0; i < meret; i++) {
+            for (int j = 0; j < meret; j++) {
+                this.mezok[i][j] = ujMezok[i][j];
+            }
+        }
+    }
 
 }
